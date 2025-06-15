@@ -1,0 +1,50 @@
+{
+  "sources": [
+    {
+      "name": "Interviewing.io Blog",
+      "url": "https://interviewing.io/blog",
+      "type": "blog",
+      "selectors": {
+        "next_data_script_id": "__NEXT_DATA__"
+      }
+    },
+    {
+      "name": "Interviewing.io Company Guides",
+      "url": "https://interviewing.io/topics#companies",
+      "type": "guide",
+      "selectors": {
+        "guide_url_pattern": "-interview-questions",
+        "title_selector": "h1",
+        "content_container_selector": "div.shrink",
+        "content_element_selectors": ["h2", "h3", "p", "li"]
+      }
+    },
+    {
+      "name": "Interviewing.io Interview Guides",
+      "url": "https://interviewing.io/learn#interview-guides",
+      "type": "guide",
+      "selectors": {
+        "section_header_id": "interview-guides",
+        "guides_container_selector": "div",
+        "guide_link_selector": "a",
+        "title_selector": "h3",
+        "content_selector": "p"
+      }
+    },
+    {
+      "name": "Nil's DS&A Blog",
+      "url": "https://nilmamano.com/blog/category/dsa",
+      "type": "blog"
+    },
+    {
+      "name": "BCTCI - First 7 Chapters",
+      "url": "scraper/Sneak Peek BCTCI - First 7 Chapters - What's Broken About Coding Interviews, What Recruiters Won't Tell You, How to Get In the Door, and more.pdf",
+      "type": "pdf"
+    },
+    {
+      "name": "BCTCI - Sliding Windows & Binary Search",
+      "url": "scraper/Sneak Peak BCTCI - Sliding Windows & Binary Search.pdf",
+      "type": "pdf"
+    }
+  ]
+}

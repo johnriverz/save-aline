@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Scraper output
+scraper/output.json
+scraper.log
+scraper/debug_screenshot.png
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo 
