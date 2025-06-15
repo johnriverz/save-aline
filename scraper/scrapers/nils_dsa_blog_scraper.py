@@ -1,14 +1,16 @@
+import logging
 from playwright.sync_api import sync_playwright, Error as PlaywrightError
 from .base_scraper import BaseScraper
-import logging
 
 class NilsDsaBlogScraper(BaseScraper):
     """
     Scraper for Nil's DS&A Blog.
+    This scraper uses Playwright to handle the client-side rendered content.
     """
-    def __init__(self, url, selectors=None):
+    name = "Nil's DS&A Blog"
+
+    def __init__(self, url):
         super().__init__(url)
-        self.selectors = selectors
 
     def scrape(self):
         """

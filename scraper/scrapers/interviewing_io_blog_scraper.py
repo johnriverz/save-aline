@@ -6,10 +6,10 @@ import logging
 
 class InterviewingIoBlogScraper(BaseScraper):
     """
-    Scraper for the Interviewing.io blog.
-    It works by finding the '__NEXT_DATA__' script tag in the HTML
-    and parsing the JSON content to extract blog post data.
+    Scrapes the blog posts from Interviewing.io.
     """
+    name = "Interviewing.io Blog"
+
     def __init__(self, url, selectors):
         super().__init__(url)
         self.selectors = selectors

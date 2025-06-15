@@ -2,11 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 from .base_scraper import BaseScraper
 import logging
+from urllib.parse import urljoin
 
 class InterviewingIoInterviewGuidesScraper(BaseScraper):
     """
-    Scraper for Interviewing.io Interview Guides.
+    Scrapes the interview guides from Interviewing.io.
     """
+    name = "Interviewing.io Interview Guides"
+
     def __init__(self, url, selectors):
         super().__init__(url)
         self.selectors = selectors

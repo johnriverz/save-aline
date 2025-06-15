@@ -5,13 +5,14 @@ import os
 
 class PdfScraper(BaseScraper):
     """
-    Scraper for PDF files.
+    Scrapes text content from a PDF file.
     """
-    def __init__(self, file_path, selectors=None):
-        # The 'url' from config.json will be a file path for this scraper
-        super().__init__(file_path)
-        self.file_path = file_path
-        self.selectors = selectors # Not used for PDF, but here for consistency
+    name = "PDF Scraper" # This is a generic name
+
+    def __init__(self, url, selectors=None):
+        super().__init__(url)
+        self.file_path = url # The 'url' from config is a file path
+        self.selectors = selectors
 
     def scrape(self):
         """

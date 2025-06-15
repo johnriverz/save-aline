@@ -1,5 +1,6 @@
-requests
-beautifulsoup4
-playwright
-PyPDF2
+requests==2.31.0
+beautifulsoup4==4.12.3
+playwright==1.44.0
+PyPDF2==3.0.1
 pandas
+pyyaml

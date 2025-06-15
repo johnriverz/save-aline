@@ -1,6 +1,6 @@
 from .base_scraper import BaseScraper
 from .interviewing_io_blog_scraper import InterviewingIoBlogScraper
+from .nils_dsa_blog_scraper import NilsDsaBlogScraper
 from .interviewing_io_company_guides_scraper import InterviewingIoCompanyGuidesScraper
 from .interviewing_io_interview_guides_scraper import InterviewingIoInterviewGuidesScraper
-from .nils_dsa_blog_scraper import NilsDsaBlogScraper
 from .pdf_scraper import PdfScraper
