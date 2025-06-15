@@ -4,3 +4,4 @@ from .nils_dsa_blog_scraper import NilsDsaBlogScraper
 from .interviewing_io_company_guides_scraper import InterviewingIoCompanyGuidesScraper
 from .interviewing_io_interview_guides_scraper import InterviewingIoInterviewGuidesScraper
 from .pdf_scraper import PdfScraper
+from .quill_blog_scraper import QuillBlogScraper
