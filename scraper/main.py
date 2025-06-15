@@ -1,6 +1,6 @@
 import json
 import logging
-from scrapers import (
+from .scrapers import (
     InterviewingIoBlogScraper, 
     NilsDsaBlogScraper,
     InterviewingIoCompanyGuidesScraper,
@@ -33,25 +33,38 @@ def main():
     with open('scraper/config.json', 'r', encoding='utf-8') as f:
         config = json.load(f)
 
-    all_items = []
+    output_data = []
 
     for source in config['sources']:
         logging.info(f"Processing source: {source['name']}")
-        if source['name'] in scraper_map:
+        
+        # Determine the correct scraper class
+        scraper_class = None
+        if source['type'] == 'pdf':
+            scraper_class = PdfScraper
+        elif source['name'] in scraper_map:
             scraper_class = scraper_map[source['name']]
+
+        if scraper_class:
             selectors = source.get('selectors')
-            scraper = scraper_class(source['url'], selectors=selectors)
+            # Pass selectors only if the scraper's __init__ expects it
+            if 'selectors' in scraper_class.__init__.__code__.co_varnames:
+                 scraper = scraper_class(source['url'], selectors=selectors)
+            else:
+                 scraper = scraper_class(source['url'])
+            
             items = scraper.scrape()
             if items:
                 logging.info(f"Successfully scraped {len(items)} items from {source['name']}.")
-                all_items.extend(items)
+                source_output = {
+                    "team_id": "aline123",
+                    "items": items
+                }
+                output_data.append(source_output)
             else:
                 logging.warning(f"No items scraped from {source['name']}.")
-
-    output_data = {
-        "team_id": "aline123",
-        "items": all_items
-    }
+        else:
+            logging.warning(f"No scraper found for source: {source['name']}")
 
     # The final output will be written to a file here.
     with open('scraper/output.json', 'w', encoding='utf-8') as f:
