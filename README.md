@@ -16,8 +16,8 @@ The framework is designed to be highly modular, allowing for the easy addition o
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
-    cd <your-repo-directory>
+    git clone https://github.com/johnriverz/save-aline
+    cd save-aline
     ```
 
 2.  **Install dependencies:**
@@ -54,11 +54,11 @@ python -m scraper.main config init
 
 **Add a New Source (Optional)**
 
-If you write a new scraper plugin, you can add it to your configuration interactively.
+This command allows you to add a new scraping target to your configuration file by using one of the available **scraper plugins**. Note that a scraper plugin must exist first for the website you want to scrape (see the "Extending the Scraper" section below).
 ```bash
 python -m scraper.main config add
 ```
-The wizard will show you a list of available scraper plugins and guide you through adding a new source to your `config.yaml`.
+The wizard will show you a list of available scraper plugins (e.g., "Quill.co Blog") and guide you through adding a new source to your `config.yaml`.
 
 **Remove a Source (Optional)**
 
@@ -83,21 +83,25 @@ The script will:
 
 Adding a new scraper is simple:
 
-1.  **Create a New Scraper File**: Add a new Python file in the `scraper/scrapers/` directory (e.g., `my_new_scraper.py`).
+1.  **Create a New Scraper File**: Add a new Python file in the `scraper/scrapers/` directory (e.g., `quill_blog_scraper.py`).
 
 2.  **Implement the Scraper Class**: Inside your new file, create a class that inherits from `BaseScraper`.
 
     -   It **must** inherit from `scraper.scrapers.base_scraper.BaseScraper`.
     -   It **must** have a `name` class attribute. This name is used by the CLI to identify the scraper.
-    -   It **must** implement a `scrape(self)` method that returns a list of dictionaries, where each dictionary represents a scraped item.
+    -   It **must** implement a `scrape(self)` method that returns a list of dictionaries.
+    -   For client-side rendered websites (like those built with React or Next.js), you **must** use a browser automation tool like Playwright, as shown in the example below.
 
-3.  **Example Scraper (`my_new_scraper.py`):**
+3.  **Example Scraper (`quill_blog_scraper.py`):**
     ```python
+    import logging
+    from playwright.sync_api import sync_playwright, Error
+    from urllib.parse import urljoin
     from .base_scraper import BaseScraper
 
-    class MyNewScraper(BaseScraper):
+    class QuillBlogScraper(BaseScraper):
         # This name will be shown in the `config add` wizard
-        name = "My Awesome Blog"
+        name = "Quill.co Blog"
 
         def __init__(self, url, selectors=None):
             super().__init__(url)
@@ -105,25 +109,17 @@ Adding a new scraper is simple:
 
         def scrape(self):
             # Your scraping logic here...
-            print(f"Scraping from {self.url}!")
-            # Must return a list of items
-            return [
-                {
-                    "title": "My First Post",
-                    "content": "This is the content.",
-                    "content_type": "blog",
-                    "source_url": self.url,
-                    "author": "Me",
-                    "user_id": ""
-                }
-            ]
+            logging.info(f"Scraping Quill.co blog from {self.url}")
+            items = []
+            # ... (Playwright logic to launch browser, scrape pages, etc.) ...
+            return items
     ```
 
 4.  **Import in `__init__.py`**: Add your new class to `scraper/scrapers/__init__.py` so it can be discovered.
     ```python
     # scraper/scrapers/__init__.py
     # ... other imports
-    from .my_new_scraper import MyNewScraper
+    from .quill_blog_scraper import QuillBlogScraper
     ```
 
-5.  **Add to Config**: Run `python -m scraper.main config add` and your new scraper, "My Awesome Blog", will appear as an option. 
+5.  **Add to Config**: Run `python -m scraper.main config add`. Your new scraper, "Quill.co Blog", will appear as an option. 
