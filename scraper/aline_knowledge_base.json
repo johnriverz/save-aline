@@ -1,0 +1,85 @@
+{
+  "team_id": "aline123",
+  "items": [
+    {
+      "title": "Overview of Beyond Cracking the Coding Interview",
+      "content": "# Beyond Cracking the Coding Interview\n\n## Interview Checklist\n\n### Study Plan\n\n### Boosters\n\n### Related Books\n- **Cracking the Coding Interview**: 189 Programming Questions and Solutions\n- **Cracking the PM Career**: The Skills, Frameworks, and Practices to Become a Great Product Manager\n- **Cracking the PM Interview**: How to Land a Product Manager Job in Technology\n- **Cracking the Tech Career**: Insider Advice on Landing a Job at Google, Microsoft, Apple, or Any Top Tech Company\n\n## Authors\n- Gayle L. McDowell\n- Mike Mroczka\n- Aline Lerner\n- Nil Mamano\n\n## Publication Information\n- **Copyright**: © 2025 by CareerCup, LLC\n- **ISBN**: 978-1955706001\n- **Published by**: CareerCup, LLC, Palo Alto, CA\n\n## What's Inside\n1. **Introduction**\n2. **Ugly Truths & Hidden Realities**\n3. **Job Searches, Start to Finish**\n4. **Offers & Negotiation**\n5. **Behavioral Interviews**\n6. **Principles of Coding Interviews**\n7. **Catalog of Technical Topics**\n\n### Key Chapters\n- **Ch 0**: Why Job Searches Suck\n- **Ch 1**: A Brief History of Technical Interviews\n- **Ch 2**: What’s Broken About Coding Interviews\n- **Ch 21**: Big O Analysis\n- **Ch 24**: Problem-Solving Boosters\n",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Gayle L. McDowell, Mike Mroczka, Aline Lerner, Nil Mamano",
+      "user_id": ""
+    },
+    {
+      "title": "Why Job Searches Suck",
+      "content": "Job searches suck— especially for engineers, who are, by and large, rational, well-intentioned people who expect the world to function according to some set of predictable rules. Why do job searches suck so much?\n\n- **Job searches are not deterministic**, and neither are interview outcomes. In job searches, effort doesn’t always correlate with results. For technical interviews specifically, there’s little predictability in how the same person will perform from interview to interview.\n- **No feedback loop**. When you apply online and don't get a response, you can't tell if you weren’t a fit or if no one even saw your application. Your insecurities can convince you that not only did a human look, but they quickly sized you up, saw right through you, and lasered in on every single flaw to conclude (correctly, in your mind) that you’re unfit for the job. When you interview, whether you pass or get rejected, you often don’t know why, which makes it difficult to know how to prepare the next time.\n- **The content of your resume is often eclipsed by the brands in it**. If you don’t have brand-name companies or schools, it’s much harder to get noticed. Recruiters are notoriously bad at making value judgments based on resumes. Despite these shortcomings, resumes are still the gold standard, and that means candidates from non-traditional backgrounds enter the game with a significant disadvantage.\n- **To get in the door, you very likely have to know someone**. Surprisingly, this is even true for candidates who look good on paper; recruiters often ignore online applications because the signal-to-noise ratio is so poor. But it’s especially true if you don’t look good on paper.\n- **Technical interviews are notoriously flawed** and not representative of the actual engineering work you do every day. This one is especially rough, and it bears out in our data. Senior engineers often do worse than juniors in their first few interviews because junior engineers have more recently completed an algorithms class or have done extensive interview prep. Senior engineers have been in the trenches, often focusing on building applications; there are very few engineering roles where you’re doing the types of academic problems that you get in interviews day in and day out.\n\nThese are just a few of the challenges, but the strategies in this book will help you navigate them and achieve success—however you define it. Given all these flaws, you might ask: How did we get here, where our technical interviews feel so divorced from the work and so unpredictable in their outcomes? For that, let’s take a brief look at the history of technical interviewing.",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Unknown",
+      "user_id": ""
+    },
+    {
+      "title": "Section 3 Overview",
+      "content": "This section contains minimal content and does not provide substantial technical knowledge or concepts.",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Unknown",
+      "user_id": ""
+    },
+    {
+      "title": "Section 4 Overview",
+      "content": "This section contains minimal content and does not provide substantial technical knowledge or concepts.",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Unknown",
+      "user_id": ""
+    },
+    {
+      "title": "A Brief History of Technical Interviews",
+      "content": "Technical interviewing has its roots as far back as the 1950s, at Shockley Semiconductor Laboratories in Mountain View, California. William Shockley’s interviewing methodology came out of the need to keep up with the innovative, rapidly moving, Cold War-fueled tech sector, something that traditional hiring approaches taken from established, skills-based assembly line industries simply couldn’t handle.\n\nShockley relied on questions that could gauge analytical ability, intellect, and potential quickly. One canonical question in this category has to do with coins:\n\n> You have eight identical-looking coins, except one is lighter than the rest. Figure out which one it is with just two weighings on a pan balance.\n\nThe techniques that Shockley developed were adopted by Microsoft during the 1990s, as the success of the desktop computer, and later, the first dot-com boom spurred an explosion in tech hiring. Like Shockley, Microsoft also needed to quickly and scalably assess high volumes of candidates for potential. As software engineering became increasingly complex, it was no longer possible to have a few centralized expert programmers manage the design and then delegate away the minutiae. Even rank-and-file developers needed to be able to produce under a variety of rapidly evolving conditions, where just mastery of specific skills wasn’t enough.\n\nThe puzzle format, in particular, was easy to standardize because individual hiring managers didn’t have to come up with their own interview questions, and a company could quickly build up its own interchangeable question repository. Over time, most companies did away with puzzle questions for engineers, and moved to algorithmic questions: these questions seemed more relevant but still assessed problem-solving skills.\n\nAt many top companies, such as Google, this need for interchangeable parts ultimately carried over to the interview process as well—rather than having individual teams run their own processes and pipelines, companies standardized it. This way, in addition to questions, you could effectively plug and play the interviewers themselves—any interviewer within your org could be quickly trained up and assigned to speak with any candidate, independent of the prospective team.\n\nHowever, companies didn’t always create incentives for engineers to work hard at being good interviewers, and as you’ll see later in this book, we believe that much of the flak that algorithmic interviews get is due to the interviewers conducting them (and, often, lack of training or proper incentives).\n\nSo where does this leave us? Technical interviews are, at best, a proxy for the day-to-day tasks that a software engineer actually does, and not all interviewers are good. But, regardless, do technical interviews work? Well, that's complicated and depends a lot on your definition of \"work.\" For whom, the candidate or the company? For what type of company? Compared to what?\n\nWe would argue that interviewing as a whole is flawed, and it's really a matter of picking your poison. However, even the most ardent defenders of these sorts of technical interviews agree that false negatives—great engineers who get rejected—are common. FAANGs and other companies who adopt these processes tolerate a high false negative rate, under the rationale that it's better to reject a good candidate than to hire a bad one. The process is optimized to reduce false positives.\n\nFor you, the candidate, that kind of sucks. But it is what it is, and that's what this book is here for: to help you avoid being one of those false negatives.",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Unknown",
+      "user_id": ""
+    },
+    {
+      "title": "Introduction to Beyond Cracking the Coding Interview",
+      "content": "# Beyond Cracking the Coding Interview\n\nThis book aims to help candidates pass tough coding interviews, get noticed, and negotiate successfully. It includes a comprehensive study plan, interview checklist, and various resources for preparing for technical interviews.\n\n## Key Sections\n- **Interview Checklist**: A guide to prepare for coding interviews.\n- **Study Plan**: A structured approach to studying for interviews.\n- **Programming Questions**: 189 programming questions and solutions to practice.\n- **Career Guidance**: Insights on becoming a great product manager and landing jobs at top tech companies like Google, Microsoft, and Apple.\n\n## Authors\n- Gayle L. McDowell\n- Mike Mroczka\n- Aline Lerner\n- Nil Mamano\n\n## Publication Information\n- Published by CareerCup, LLC, Palo Alto, CA.\n- Copyright © 2025 by CareerCup. All rights reserved.\n\n## ISBN\n- 978-1955706001 (ISBN 13)\n\n## Acknowledgments\n- Personal dedications from the authors to their families and readers.",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Gayle L. McDowell, Mike Mroczka, Aline Lerner, Nil Mamano",
+      "user_id": ""
+    },
+    {
+      "title": "Principles and Catalog of Coding Interviews",
+      "content": "## Problem-Solving Boosters\nThe remaining 20% of questions rely on tricks (ideas that are really hard to come up with on your own if you haven't seen them before). Combining these two, after going through the book, you should be able to tackle all but 20% * 20% = 4% of questions, which are those based on niche topics and requiring tricks. But if that happens, you've been truly unlucky.\n\n## The Principles and the Catalog\nBesides solving problems, we want to help you practice effectively and know how to navigate an interview setting. This is covered in Part VI: Principles of Coding Interviews (pg 166). It includes:\n- **Study Plan**: A detailed study plan for how to practice using this book's materials.\n- **Universal Rubric**: How you're evaluated by interviewers.\n- **Interview Checklist**: Breaking down each step you should take in a coding interview.\n- **Big-O Analysis**: In-depth coverage of the \"language\" of technical interviews.\n- **Problem-Solving Strategies**: Boundary thinking, trigger thinking, and problem-solving boosters.\n\nThe second part is a Catalog of data structures and algorithms topics. We've broken the technical topics into tiers, with Tier 1 being the highest priority:\n- **Tier 1**: Essential topics from sets & maps to trees and graphs.\n- **Tier 2**: Intermediate topics like heaps, sliding windows, and prefix sums.\n- **Tier 3**: Niche (online-only) topics that didn't warrant a spot in the physical book because they don’t come up that often (this is where we enter the niche 20% territory). The online-only chapters can be found at [bctci.co/bonus](http://bctci.co/bonus).",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Unknown",
+      "user_id": ""
+    },
+    {
+      "title": "Understanding Topics, Reusable Ideas, and Coding Recipes",
+      "content": "## How to Practice\nThis section serves as your entry point to the rest of the book. As you explore the Catalog, you'll encounter three related concepts: topics, reusable ideas, and recipes.\n\n### Definitions:\n- **Topic**: A chapter from the Catalog, such as Binary Search.\n- **Reusable Idea**: A coding idea that can typically be applied across various problems and topics. These are tactical tips worth remembering, for example, \"pass indices, not strings in recursive code to avoid using extra space.\" You will usually find them next to the first problem where they are used (look for the 📌 icon).\n- **Coding Recipe**: A pseudo-code template related to a specific topic that can be utilized as a building block to solve similar problems with minor adjustments.\n\n### Mantra\nOur mantra? If you encounter something once, it’s a trick; if you encounter it repeatedly, it’s a tool.\n\nFor questions, comments, or bugs, report them at [bctci.co/bugs](http://bctci.co/bugs) or engage with the authors on Discord: [bctci.co/discord](http://bctci.co/discord).",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Unknown",
+      "user_id": ""
+    },
+    {
+      "title": "Sliding Windows & Binary Search",
+      "content": "AI interviewer, replays, and more materials for this chapter at [bctci.co/binary-search](http://bctci.co/binary-search)",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Unknown",
+      "user_id": ""
+    },
+    {
+      "title": "Sliding Windows & Binary Search",
+      "content": "## Sliding Windows\nThe sliding window technique is a useful method for solving problems that involve arrays or lists. It allows you to maintain a subset of elements in a contiguous block, which can be adjusted dynamically as you iterate through the data structure.\n\n### Key Concepts of Sliding Windows\n- **Fixed-size window**: A window of a specific size that moves through the data.\n- **Dynamic window**: A window that can grow or shrink based on certain conditions.\n\n### Example of Fixed-size Sliding Window\n```python\ndef max_sum(arr, k):\n    max_sum = 0\n    window_sum = sum(arr[:k])\n    for i in range(len(arr) - k):\n        window_sum = window_sum - arr[i] + arr[i + k]\n        max_sum = max(max_sum, window_sum)\n    return max_sum\n```\n\n## Binary Search\nBinary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing the search interval in half.\n\n### Key Concepts of Binary Search\n- **Divide and conquer**: The algorithm divides the problem into smaller subproblems.\n- **Logarithmic time complexity**: The time complexity of binary search is O(log n).\n\n### Example of Binary Search\n```python\ndef binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = left + (right - left) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n```",
+      "content_type": "book",
+      "source_url": "",
+      "author": "Unknown",
+      "user_id": ""
+    }
+  ]
+}
