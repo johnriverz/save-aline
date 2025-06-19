@@ -6,6 +6,22 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+def _deduplicate_items(items: list[dict]) -> list[dict]:
+    """
+    Deduplicates a list of scraped items based on their title.
+    If multiple items have the same title, it keeps the one with the longest content.
+    """
+    unique_items = {}
+    for item in items:
+        title = item.get("title")
+        if not title:
+            continue
+
+        if title not in unique_items or len(item.get("content", "")) > len(unique_items[title].get("content", "")):
+            unique_items[title] = item
+    
+    return list(unique_items.values())
+
 class Crawler:
     """
     Crawls a website by finding its sitemap and scraping all the URLs found.
@@ -145,9 +161,14 @@ class Crawler:
             except Exception as e:
                 logger.error(f"Failed to scrape {url}: {e}")
 
-        logger.info(f"Crawl finished. Total items scraped: {len(all_items)}")
+        logger.info(f"Crawl finished. Total items scraped before deduplication: {len(all_items)}")
+
+        # Deduplicate the final list of items
+        deduplicated_items = _deduplicate_items(all_items)
+        logger.info(f"Deduplication complete. Final item count: {len(deduplicated_items)}")
+        
         return {
             "team_id": self.scraper.team_id,
-            "items": all_items,
+            "items": deduplicated_items,
             "status": "crawl_completed"
         } 
