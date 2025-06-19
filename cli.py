@@ -11,19 +11,6 @@ from pdf_processor import PDFProcessor
 from api_key_manager import APIKeyManager
 from scraper.crawler import Crawler
 
-def scrape_url(url: str, output_path: str):
-    """Scrapes a single URL and saves the result to a file."""
-    print(f"Scraping URL: {url}")
-    scraper = KadoaInspiredScraper()
-    data = scraper.scrape_with_ai_orchestration(url)
-    
-    if data and data.get("items"):
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=4)
-        print(f"✅ Results saved to {output_path}")
-    else:
-        print(f"❌ Scraping failed for {url}. No data was extracted.")
-
 def scrape_pdf(file_path: str, output_path: str):
     """Scrapes a single PDF file and saves the result to a file."""
     print(f"📖 Scraping PDF: {file_path}")
@@ -66,39 +53,15 @@ def crawl_site(url: str, output_path: str):
     else:
         print(f"❌ Crawling failed for {url}. Reason: {data.get('status', 'Unknown error')}")
 
-def cli_run_test_suite():
-    """Runs the full test suite."""
-    print("🚀 Running the full test suite...")
-    
-    # The test suite is in a different directory, so we need to handle paths carefully.
-    # The test suite expects to be run from the root of the project.
-    # The CLI is also run from the root of the project, so paths should be correct.
-    
-    try:
-        # We need to import the function from the test_suite module
-        from scraper.test_suite import run_test_suite as run_suite
-        run_suite()
-        print("\n✅ Test suite finished successfully.")
-    except Exception as e:
-        print(f"\n❌ An error occurred while running the test suite: {e}")
-
 def main():
     """Main function to handle command-line arguments."""
     parser = argparse.ArgumentParser(description="Aline Web Scraper CLI")
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
-    # Scrape URL command
-    parser_url = subparsers.add_parser("scrape_url", help="Scrape a single URL")
-    parser_url.add_argument("url", type=str, help="The URL to scrape")
-    parser_url.add_argument("--output", type=str, default="scraped_data.json", help="Path to save the output JSON file")
-
     # Scrape PDF command
     parser_pdf = subparsers.add_parser("scrape_pdf", help="Scrape a single PDF file")
     parser_pdf.add_argument("file_path", type=str, help="The local path to the PDF file")
     parser_pdf.add_argument("--output", type=str, default="scraped_data.json", help="Path to save the output JSON file")
-
-    # Test suite command
-    subparsers.add_parser("run_tests", help="Run the full test suite")
 
     # Crawl site command
     parser_crawl = subparsers.add_parser("crawl_site", help="Crawl and scrape an entire website starting from a base URL")
@@ -113,21 +76,11 @@ def main():
 
     api_key_manager = APIKeyManager()
 
-    if args.command == "scrape_url":
-        if not api_key_manager.get_api_key():
-            print("OpenAI API key not found. Please set it using the 'set_api_key' command.")
-            return
-        scrape_url(args.url, args.output)
-    elif args.command == "scrape_pdf":
+    if args.command == "scrape_pdf":
         if not api_key_manager.get_api_key():
             print("OpenAI API key not found. Please set it using the 'set_api_key' command.")
             return
         scrape_pdf(args.file_path, args.output)
-    elif args.command == "run_tests":
-        if not api_key_manager.get_api_key():
-            print("OpenAI API key not found. Please set it using the 'set_api_key' command.")
-            return
-        cli_run_test_suite()
     elif args.command == "crawl_site":
         if not api_key_manager.get_api_key():
             print("OpenAI API key not found. Please set it using the 'set_api_key' command.")
