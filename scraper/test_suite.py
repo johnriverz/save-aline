@@ -1,6 +1,6 @@
 import json
 import logging
-from kadoa_inspired_scraper import KadoaInspiredScraper
+from agent_scraper import KadoaInspiredScraper
 from pdf_processor import PDFProcessor
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

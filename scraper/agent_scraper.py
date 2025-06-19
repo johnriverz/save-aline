@@ -285,70 +285,68 @@ Consider:
     
     def _ai_extract_content(self, html: str, url: str) -> Optional[Dict]:
         """
-        AI Agent 2: Automated data transformation
+        AI Agent 2: Extracts structured data from raw HTML
+        This has been updated to be more stateless and explicit to prevent data blending.
         """
-        try:
-            soup = BeautifulSoup(html, 'html.parser')
-            
-            # Remove scripts and styles
-            for element in soup(['script', 'style', 'nav', 'footer', 'header']):
-                element.decompose()
-            
-            text = soup.get_text()
-            # A more robust cleaning process
-            text = ' '.join(text.split()) # Consolidate whitespace
-            # Remove control characters except for standard whitespace
-            text = ''.join(ch for ch in text if ch.isprintable() or ch in '\n\r\t')
+        soup = BeautifulSoup(html, "html.parser")
+        body_text = soup.get_text(separator=' ', strip=True)[:10000] # Limit context size
 
-            if len(text) < 100:
-                return None
-            
-            # AI transforms raw HTML into the required structured data format
-            system_prompt = """You are an expert data transformation agent. Your task is to extract the main article from the provided HTML content and format it into a specific JSON structure.
-
-Return ONLY a valid JSON object with the following schema:
+        system_prompt = """
+You are a stateless, single-tasking data extraction expert.
+Your ONLY job is to extract information from the <HTML_CONTENT> provided in THIS request.
+- **DO NOT** use any prior knowledge or context from previous requests.
+- **ONLY** analyze the content provided below.
+- The output MUST be a single JSON object containing a list of one or more "items".
+- If the content is a blog post, return one item. If it's a list of articles, return multiple items.
+- If no meaningful content is found, return an empty list: {"items": []}
+- Each item must have this exact structure:
 {
-  "title": "The main title of the article. Be concise and accurate.",
-  "content": "The full article content, formatted as clean Markdown (max 2000 chars). Preserve headings, lists, bold text, and code blocks.",
-  "author": "The author's name, or 'Unknown' if not found."
+  "title": "string",
+  "content": "string, in markdown format",
+  "content_type": "string (e.g., 'blog', 'article', 'docs')",
+  "source_url": "string",
+  "author": "string or 'Unknown'",
+  "user_id": ""
 }
+"""
+        user_prompt = f"""
+Source URL: {url}
 
-Focus exclusively on the main article content. Ignore navigation bars, sidebars, ads, footers, and other boilerplate text. Ensure the content is well-structured and readable.
+<HTML_CONTENT>
+{body_text}
+</HTML_CONTENT>
 """
 
+        try:
+            logger.info("🤖 AI is extracting content...")
             response = self.client.chat.completions.create(
                 model="gpt-4o-mini",
+                response_format={"type": "json_object"},
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"URL: {url}\n\nContent:\n{text[:4000]}"}
+                    {"role": "user", "content": user_prompt}
                 ],
-                max_tokens=1000,
-                temperature=0.0
+                temperature=0,
+                max_tokens=4000
             )
+
+            content = response.choices[0].message.content
+            extracted_data = json.loads(content)
             
-            content = response.choices[0].message.content.strip()
-            if '```json' in content:
-                content = content.split('```json')[1].split('```')[0]
-            elif '```' in content:
-                content = content.split('```')[1]
+            # Add team_id to the final output
+            extracted_data["team_id"] = self.team_id
             
-            extracted = json.loads(content)
-            
-            # Ensure the output matches the required format exactly
-            return {
-                "team_id": self.team_id,
-                "items": [
-                    {
-                        "title": extracted.get("title", "Extracted Content"),
-                        "content": extracted.get("content", text[:2000]),
-                        "content_type": "blog",
-                        "source_url": url,
-                        "author": extracted.get("author", "Unknown"),
-                        "user_id": ""
-                    }
-                ]
-            }
-            
+            # Ensure all items have the source_url populated
+            for item in extracted_data.get("items", []):
+                if not item.get("source_url"):
+                    item["source_url"] = url
+
+            return extracted_data
+
+        except json.JSONDecodeError as e:
+            logger.error(f"AI content extraction failed: Invalid JSON response - {e}")
+            logger.debug(f"Invalid JSON received from AI: {content}")
+            return None
         except Exception as e:
             logger.error(f"AI content extraction failed: {e}")
             return None
