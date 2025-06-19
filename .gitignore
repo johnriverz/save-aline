@@ -8,7 +8,7 @@ env/
 venv/
 
 # Scraper output
-scraper/output.json
+*.json
 scraper.log
 scraper/debug_screenshot.png
 
@@ -17,3 +17,5 @@ scraper/debug_screenshot.png
 .idea/
 *.swp
 *.swo 
+
+.env
